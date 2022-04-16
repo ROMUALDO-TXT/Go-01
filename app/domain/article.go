@@ -1,4 +1,6 @@
-package model
+package domain
+
+type Articles []Article
 
 type Article struct {
 	Title   string `json:"Title"`

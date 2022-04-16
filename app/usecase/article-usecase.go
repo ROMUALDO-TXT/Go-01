@@ -1,18 +1,17 @@
 package usecase
 
 import (
+	"app/domain"
+	"encoding/json"
 	"fmt"
-	"json"
 	"net/http"
-
-	"./modules/article/model"
 )
 
-var Articles []model.Article
+var Articles domain.Article
 
 func returnAllArticles(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Endpoint Hit: returnAllArticles")
-	Articles = []model.Article{
+	Articles = []domain.Article{
 		{Title: "Hello", Desc: "Article Description", Content: "Article Content"},
 		{Title: "Hello 2", Desc: "Article Description", Content: "Article Content"},
 	}
