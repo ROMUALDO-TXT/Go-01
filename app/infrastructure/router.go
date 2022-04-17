@@ -14,6 +14,7 @@ func HandleRequests(logger interfaces.Logger) {
 
 	router.HandleFunc("/", usecase.HomePage)
 	router.HandleFunc("/articles", usecase.ReturnAllArticles)
+	router.HandleFunc("/article/{id}", usecase.ReturnSingleArticle)
 
 	if err := http.ListenAndServe(":"+os.Getenv("SERVER_PORT"), router); err != nil {
 		logger.LogError("%s", err)
