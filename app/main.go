@@ -6,8 +6,12 @@ import (
 
 func main() {
 	logger := infrastructure.NewLogger()
-
 	infrastructure.Load(logger)
 
-	infrastructure.HandleRequests(logger)
+	sqlHandler, err := infrastructure.NewSQLHandler()
+	if err != nil {
+		logger.LogError("%s", err)
+	}
+
+	infrastructure.HandleRequests(sqlHandler, logger)
 }

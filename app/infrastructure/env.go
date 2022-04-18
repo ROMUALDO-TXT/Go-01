@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ROMUALDO-TXT/Go-01/app/interfaces"
+	interfaces "github.com/ROMUALDO-TXT/Go-01/app/interface"
 )
 
 // Load is load configs from a env file.

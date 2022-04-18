@@ -4,17 +4,19 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/ROMUALDO-TXT/Go-01/app/interfaces"
-	"github.com/ROMUALDO-TXT/Go-01/app/usecase"
+	interfaces "github.com/ROMUALDO-TXT/Go-01/app/interface"
+	controller "github.com/ROMUALDO-TXT/Go-01/app/interface/controllers"
 	"github.com/gorilla/mux"
 )
 
-func HandleRequests(logger interfaces.Logger) {
+func HandleRequests(sqlHandler interfaces.SQLHandler, logger interfaces.Logger) {
 	router := mux.NewRouter().StrictSlash(true)
+	homepageController := controller.NewHomepageController(sqlHandler, logger)
+	articleController := controller.NewArticleController(sqlHandler, logger)
 
-	router.HandleFunc("/", usecase.HomePage)
-	router.HandleFunc("/articles", usecase.ReturnAllArticles)
-	router.HandleFunc("/article/{id}", usecase.ReturnSingleArticle)
+	router.HandleFunc("/", homepageController.Index)
+	router.HandleFunc("/articles", articleController.Index)
+	router.HandleFunc("/article/{id}", articleController.Show)
 
 	if err := http.ListenAndServe(":"+os.Getenv("SERVER_PORT"), router); err != nil {
 		logger.LogError("%s", err)
