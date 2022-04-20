@@ -37,3 +37,7 @@ func (l *Logger) LogAccess(format string, v ...interface{}) {
 
 	log.Printf(format, v...)
 }
+
+// func (l *Logger) Log(v ...interface{}) {
+
+// }
