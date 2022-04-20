@@ -6,6 +6,7 @@ import (
 	"os"
 
 	interfaces "github.com/ROMUALDO-TXT/Go-01/app/interface"
+	_ "github.com/lib/pq"
 )
 
 // A SQLHandler belong to the infrastructure layer.

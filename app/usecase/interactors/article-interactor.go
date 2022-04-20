@@ -21,8 +21,8 @@ func (ui *ArticleInteractor) Show(id string) (article domain.Article, err error)
 	return
 }
 
-// func CreateArticle(w http.ResponseWriter, r *http.Request) {
+func (ai *ArticleInteractor) Save(a domain.Article) (article domain.Article, err error) {
+	article, err = ai.ArticleRepository.Save(a)
 
-// 	reqBody, err := ioutil.ReadAll(r.Body	if err
-
-// }
+	return
+}

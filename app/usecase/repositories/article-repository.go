@@ -7,7 +7,7 @@ import (
 type ArticleRepository interface {
 	FindAll() (domain.Articles, error)
 	FindById(id string) (domain.Article, error)
-	//Save(domain.Article) (int64, error)
+	Save(a domain.Article) (domain.Article, error)
 	//Update
 	//Delete
 }

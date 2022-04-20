@@ -14,11 +14,11 @@ var articles = []domain.Article{
 	{Id: "2", Title: "Hello 2", Desc: "Article Description", Content: "Article Content"},
 }
 
-func (pr *ArticleRepository) FindAll() (articles domain.Articles, err error) {
+func (ar *ArticleRepository) FindAll() (articles domain.Articles, err error) {
 	return articles, nil
 }
 
-func (pr *ArticleRepository) FindById(id string) (article domain.Article, err error) {
+func (ar *ArticleRepository) FindById(id string) (article domain.Article, err error) {
 
 	for _, article := range articles {
 		if article.Id == id {
@@ -30,10 +30,9 @@ func (pr *ArticleRepository) FindById(id string) (article domain.Article, err er
 	return
 }
 
-// func (pr *ArticleRepository) CreateArticle(w http.ResponseWriter, r *http.Request) {
+func (ar *ArticleRepository) Save(a domain.Article) (article domain.Article, err error) {
 
-// 	reqBody, err := ioutil.ReadAll(r.Body)
+	articles = append(articles, a)
 
-// 	if err
-
-// }
+	return a, nil
+}

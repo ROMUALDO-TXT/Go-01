@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/ROMUALDO-TXT/Go-01/app/domain"
 	i "github.com/ROMUALDO-TXT/Go-01/app/interface"
 	repository "github.com/ROMUALDO-TXT/Go-01/app/interface/repositories"
 	interactor "github.com/ROMUALDO-TXT/Go-01/app/usecase/interactors"
@@ -29,7 +30,8 @@ func NewArticleController(sqlHandler i.SQLHandler, logger i.Logger) *ArticleCont
 func (ac *ArticleController) Index(w http.ResponseWriter, r *http.Request) {
 	ac.Logger.LogAccess("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)
 
-	Articles, err := ac.ArticleInteractor.Index()
+	articles, err := ac.ArticleInteractor.Index()
+
 	if err != nil {
 		ac.Logger.LogError("%s", err)
 
@@ -38,7 +40,7 @@ func (ac *ArticleController) Index(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(err)
 	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(Articles)
+	json.NewEncoder(w).Encode(articles)
 }
 
 func (ac *ArticleController) Show(w http.ResponseWriter, r *http.Request) {
@@ -55,4 +57,32 @@ func (ac *ArticleController) Show(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(Articles)
+}
+
+func (ac *ArticleController) Save(w http.ResponseWriter, r *http.Request) {
+	ac.Logger.LogAccess("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)
+
+	a := domain.Article{}
+	err := json.NewDecoder(r.Body).Decode(&a)
+
+	defer r.Body.Close()
+
+	if err != nil {
+		ac.Logger.LogError("%s", err)
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(err)
+	}
+
+	article, err := ac.ArticleInteractor.Save(a)
+	if err != nil {
+		ac.Logger.LogError("%s", err)
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(err)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(article)
 }

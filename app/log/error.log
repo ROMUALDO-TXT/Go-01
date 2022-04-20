@@ -1,2 +1,13 @@
 2022/04/17 18:54:15 open .env: O sistema não pode encontrar o arquivo especificado.
 2022/04/17 18:54:15 invalid argument
+2022/04/18 22:45:39 sql: unknown driver "postgresql" (forgotten import?)
+2022/04/18 22:51:06 sql: unknown driver "postgresql" (forgotten import?)
+2022/04/18 22:51:27 sql: unknown driver "postgres" (forgotten import?)
+2022/04/18 22:54:28 missing "=" after "root:password@tcp(postgresql:3306)/go_01" in connection info string"
+2022/04/19 13:22:37 missing "=" after "root:password@tcp(postgresql:5432)/go_01_postgres" in connection info string"
+2022/04/19 13:38:48 missing "=" after "root:password@tcp(postgresql:5432)/go_01_postgres" in connection info string"
+2022/04/19 13:43:16 missing "=" after "user:pass@tcp(postgres:5432)/postgres" in connection info string"
+2022/04/19 13:44:43 missing "=" after "user:pass@tcp(postgres:5432)/postgresGo" in connection info string"
+2022/04/19 13:51:28 missing "=" after "user:pass@tcp(postgres:5432)/postgresGo" in connection info string"
+2022/04/19 13:51:28 listen tcp :10000: bind: Normalmente é permitida apenas uma utilização de cada endereço de soquete (protocolo/endereço de rede/porta).
+2022/04/19 13:52:41 missing "=" after "user:pass@tcp(postgres:5432)/postgresGo" in connection info string"
