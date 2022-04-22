@@ -39,6 +39,9 @@ func (ac *ArticleController) Index(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(500)
 		json.NewEncoder(w).Encode(err)
 	}
+
+	ac.Logger.Log("%s", articles)
+
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(articles)
 }

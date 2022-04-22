@@ -1,7 +1,7 @@
 package interfaces
 
 type Logger interface {
-	Log(...interface{})
+	Log(string, ...interface{})
 	LogError(string, ...interface{})
 	LogAccess(string, ...interface{})
 }

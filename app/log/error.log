@@ -11,3 +11,4 @@
 2022/04/19 13:51:28 missing "=" after "user:pass@tcp(postgres:5432)/postgresGo" in connection info string"
 2022/04/19 13:51:28 listen tcp :10000: bind: Normalmente é permitida apenas uma utilização de cada endereço de soquete (protocolo/endereço de rede/porta).
 2022/04/19 13:52:41 missing "=" after "user:pass@tcp(postgres:5432)/postgresGo" in connection info string"
+2022/04/22 17:11:51 missing "=" after "./dev.db" in connection info string"

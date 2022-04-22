@@ -38,6 +38,6 @@ func (l *Logger) LogAccess(format string, v ...interface{}) {
 	log.Printf(format, v...)
 }
 
-// func (l *Logger) Log(v ...interface{}) {
-
-// }
+func (l *Logger) Log(format string, v ...interface{}) {
+	log.Printf(format, v...)
+}
